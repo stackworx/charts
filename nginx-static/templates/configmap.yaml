@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: {{ template "nginx-static.fullname" . }}-config
+data:
+  default.conf: |
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+
+            # Always render index.html for react-router
+            try_files $uri $uri/ /index.html;
+        }
+    }
+  index.html: |
+    <html>
+      <head>
+        <title>Nginx</title>
+      </head>
+      <body>
+        <p>Hello</p>
+      </body>
+    </html>
