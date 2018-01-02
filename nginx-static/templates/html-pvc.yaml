@@ -7,6 +7,8 @@ metadata:
 spec:
   accessModes:
   - ReadOnlyMany
+  # For the deploy job
+  - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
