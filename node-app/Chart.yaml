@@ -1,0 +1,8 @@
+apiVersion: v1
+description: Base Node Application
+name: node-app
+version: 0.0.1
+home: https://bitbucket.org/stackworx/charts
+maintainers:
+- name: Ciaran
+  email: ciaran@stackworx.io
