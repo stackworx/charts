@@ -1,4 +1,5 @@
 {{- range .Values.deployments }}
+{{- if .service.enabled }}
 ---
 # Service: {{ .name }}
 apiVersion: v1
@@ -24,4 +25,5 @@ spec:
     release: {{ $.Release.Name }}
 # End Service: {{ .name }}
 ...
+{{ end }}
 {{- end }}

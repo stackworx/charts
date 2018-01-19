@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "node-app.fullname" $ }}-env
+  labels:
+    app: {{ template "node-app.name" $ }}
+    chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+data:
+  POSTGRES_DB: durf
+  POSTGRES_USER: durf
+  # TODO remove
+  POSTGRES_PASSWORD: rX5QCAJpCn4BHCmA
+  DATABASE_URL: postgres://durf:rX5QCAJpCn4BHCmA@{{ .Release.Name }}-postgres/durf
+  REDIS_URI: redis://{{ .Release.Name }}-redis:6379
+  SLACK_URL: https://hooks.slack.com/services/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
+  NODE_ENV: production
+  MAIL_ENABLED: 'true'
+  MAIL_HOST: smtp-relay.gmail.com
+  PUBLIC_URL: https://durf.dev.stackworx.io
+  APP_SERVER_URI: https://api.durf.dev.stackworx.io

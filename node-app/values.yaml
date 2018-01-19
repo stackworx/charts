@@ -1,11 +1,15 @@
 deployments:
   - name: backend
     replicaCount: 1
+    migrate:
+      command: ["yarn"]
+      args: ["migrate"]
     image:
       repository: stackworx/durf-fms-server
-      tag: master
+      tag: develop
       pullPolicy: IfNotPresent
     service:
+      enabled: true
       type: ClusterIP
       externalPort: 80
       internalPort: 5000
@@ -18,13 +22,29 @@ deployments:
     resources: {}
     nodeSelector: 
       type: apps
+  - name: scheduler
+    replicaCount: 1
+    command: ["node"]
+    args: ["--harmony_object_rest_spread", "src/tasks/worker/start.js"]
+    image:
+      repository: stackworx/durf-fms-admin
+      tag: develop
+      pullPolicy: IfNotPresent
+    service:
+      enabled: false
+    ingress:
+      enabled: false
+    resources: {}
+    nodeSelector: 
+      type: apps
   - name: frontend
     replicaCount: 1
     image:
       repository: stackworx/durf-fms-admin
-      tag: master
+      tag: develop
       pullPolicy: IfNotPresent
     service:
+      enabled: true
       type: ClusterIP
       externalPort: 80
       internalPort: 80
@@ -44,6 +64,11 @@ imageCredentials:
 
 postgresql:
   imageTag: 9.6.2
+  postgresUser: durf
+  postgresDatabase: durf
+  # TODO remove this and use a secret
+  postgresPassword: rX5QCAJpCn4BHCmA
+  postgresInitdbArgs: --data-checksums
   persistence: 
     size: 2Gi
   metrics:
@@ -53,6 +78,8 @@ postgresql:
 
 redis:
   # image: bitnami/redis:VERSION
+  # TODO enable password
+  usePassword: false
   persistence: 
     size: 1Gi
   metrics:
