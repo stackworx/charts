@@ -39,5 +39,5 @@ spec:
       nodeSelector:
 {{ toYaml .nodeSelector | indent 8 }}
     {{- end }}
-# End Deployment {{ .name }}
+# End Deployment: {{ .name }}
 {{- end }}
