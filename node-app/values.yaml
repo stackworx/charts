@@ -41,3 +41,21 @@ imageCredentials:
   registry: index.docker.io/v1/
   username: buildbotstackworx
   password: <password>
+
+postgresql:
+  imageTag: 9.6.2
+  persistence: 
+    size: 2Gi
+  metrics:
+    enabled: true
+  nodeSelector: 
+    type: apps
+
+redis:
+  # image: bitnami/redis:VERSION
+  persistence: 
+    size: 1Gi
+  metrics:
+    enabled: true
+  nodeSelector: 
+    type: apps
