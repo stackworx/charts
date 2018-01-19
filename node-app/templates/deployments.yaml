@@ -1,0 +1,39 @@
+{{- range .Values.deployments }}
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    name: {{ template "node-app.fullname" $ }}
+    labels:
+      app: {{ template "node-app.name" $ }}
+      chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+      release: {{ $.Release.Name }}
+      heritage: {{ $.Release.Service }}
+  spec:
+    replicas: {{ .replicaCount }}
+    template:
+      metadata:
+        labels:
+          app: {{ template "node-app.name" $ }}
+          release: {{ $.Release.Name }}
+      spec:
+        containers:
+          - name: {{ $.Chart.Name }}
+            image: "{{ .image.repository }}:{{ .image.tag }}"
+            imagePullPolicy: {{ .image.pullPolicy }}
+            ports:
+              - containerPort: {{ .service.internalPort }}
+            livenessProbe:
+              httpGet:
+                path: /
+                port: {{ .service.internalPort }}
+            readinessProbe:
+              httpGet:
+                path: /
+                port: {{ .service.internalPort }}
+            resources:
+  {{ toYaml .resources | indent 12 }}
+      {{- if .nodeSelector }}
+        nodeSelector:
+  {{ toYaml .nodeSelector | indent 8 }}
+      {{- end }}
+{{- end }}
