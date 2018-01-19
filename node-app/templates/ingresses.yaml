@@ -27,6 +27,5 @@ spec:
               servicePort: {{ $servicePort }}
               serviceName: {{ $serviceName }}
     {{- end -}}
-# End Ingress: {{ .name }}
-{{- end }}
+{{ end }}
 {{- end }}
