@@ -1,4 +1,5 @@
 {{- range .Values.deployments }}
+---
 # Deployment: {{ .name }}
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -42,4 +43,5 @@ spec:
 {{ toYaml .nodeSelector | indent 8 }}
     {{- end }}
 # End Deployment: {{ .name }}
+...
 {{- end }}

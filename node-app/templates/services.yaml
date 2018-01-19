@@ -1,4 +1,5 @@
 {{- range .Values.deployments }}
+---
 # Service: {{ .name }}
 apiVersion: v1
 kind: Service
@@ -22,4 +23,5 @@ spec:
     component: {{ .name }}
     release: {{ $.Release.Name }}
 # End Service: {{ .name }}
+...
 {{- end }}
