@@ -19,6 +19,8 @@ spec:
         component: {{ .name }}
         release: {{ $.Release.Name }}
     spec:
+      imagePullSecrets:
+        - name: {{ template "node-app.fullname" $ }}-registrykey
       containers:
         - name: {{ $.Chart.Name }}
           image: "{{ .image.repository }}:{{ .image.tag }}"
