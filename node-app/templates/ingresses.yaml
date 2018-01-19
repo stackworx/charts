@@ -1,31 +1,32 @@
 {{- range .Values.deployments }}
-  {{- if .ingress.enabled -}}
-  {{- $serviceName := include "node-app.fullname" $ -}}
-  {{- $servicePort := .service.externalPort -}}
-  apiVersion: extensions/v1beta1
-  kind: Ingress
-  metadata:
-    name: {{ template "node-app.fullname" $ }}-{{ .name }}
-    labels:
-      app: {{ template "node-app.name" $ }}
-      component: {{ .name }}
-      chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
-      release: {{ $.Release.Name }}
-      heritage: {{ $.Release.Service }}
-    annotations:
-      {{- range $key, $value := .ingress.annotations }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
-  spec:
-    rules:
-      {{- range $host := .ingress.hosts }}
-      - host: {{ $host }}
-        http:
-          paths:
-            - path: /
-              backend:
-                serviceName: {{ $serviceName }}-{{ .name }}
-                servicePort: {{ $servicePort }}
-      {{- end -}}
-  {{- end -}}
+{{ if .ingress.enabled }}
+{{- $serviceName := include "node-app.fullname" $ -}}
+{{- $servicePort := .service.externalPort -}}
+# Ingress: {{ .name }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "node-app.fullname" $ }}
+  labels:
+    app: {{ template "node-app.name" $ }}
+    chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+  annotations:
+    {{- range $key, $value := .ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+  rules:
+    {{- range $host := .ingress.hosts }}
+    - host: {{ $host }}
+      http:
+        paths:
+          - path: /
+            backend:
+              servicePort: {{ $servicePort }}
+              serviceName: {{ $serviceName }}
+    {{- end -}}
+# End Ingress: {{ .name }}
+{{- end }}
 {{- end }}
