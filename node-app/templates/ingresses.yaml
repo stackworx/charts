@@ -5,9 +5,10 @@
   apiVersion: extensions/v1beta1
   kind: Ingress
   metadata:
-    name: {{ template "node-app.fullname" $ }}
+    name: {{ template "node-app.fullname" $ }}-{{ .name }}
     labels:
       app: {{ template "node-app.name" $ }}
+      component: {{ .name }}
       chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
       release: {{ $.Release.Name }}
       heritage: {{ $.Release.Service }}
@@ -23,7 +24,7 @@
           paths:
             - path: /
               backend:
-                serviceName: {{ $serviceName }}
+                serviceName: {{ $serviceName }}-{{ .name }}
                 servicePort: {{ $servicePort }}
       {{- end -}}
   {{- end -}}

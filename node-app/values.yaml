@@ -10,7 +10,7 @@ deployments:
       externalPort: 80
       internalPort: 5000
     ingress:
-      enabled: false
+      enabled: true
       hosts:
         - admin.durf.dev.stackworx.cloud
       annotations:
@@ -27,7 +27,7 @@ deployments:
       externalPort: 80
       internalPort: 80
     ingress:
-      enabled: false
+      enabled: true
       hosts:
         - api.durf.dev.stackworx.cloud
       annotations:
