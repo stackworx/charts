@@ -52,6 +52,7 @@ spec:
             - containerPort: {{ .service.internalPort }}
           livenessProbe:
             httpGet:
+              # TODO allow overriding
               path: /
               port: {{ .service.internalPort }}
           readinessProbe:
