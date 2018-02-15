@@ -10,3 +10,5 @@ metadata:
 data:
   # TODO add more variables
   SLACK_URL: https://hooks.slack.com/services/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
+  {{ toYaml .Values.environmentVariables | indent 2 }}
+  {{- end }}
