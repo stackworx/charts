@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ default 1 .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "app.name" . }}
@@ -23,7 +23,7 @@ spec:
       imagePullSecrets:
         - name: {{ template "app.fullname" $ }}-registrykey
       {{- end }}
-      {{- if .Values.migrate }}
+      {{- if .Values.migration.enabled }}
       initContainers:
         - name: {{ .Chart.Name }}-migration
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -31,8 +31,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
-          command: {{ .Values.migrate.command }}
-          args: {{ .Values.migrate.args }}
+          command: {{ .Values.migration.command }}
+          args: {{ .Values.migration.args }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
