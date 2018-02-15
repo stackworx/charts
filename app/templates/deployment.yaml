@@ -1,0 +1,75 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "app.fullname" . }}
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "app.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "app.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ template "app.fullname" $ }}-registrykey
+      {{- if .migrate }}
+      initContainers:
+        - name: {{ .Chart.Name }}-migration
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "app.fullname" $ }}-env
+          command: {{ .migrate.command }}
+          args: {{ .migrate.args }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.command }}
+          command: {{ .Values.command }}
+          {{- end }}
+          {{- if .Values.args }}
+          args: {{ .Values.args }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "node-app.fullname" $ }}-env
+          {{- if Values.service.enabled }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          {{- end }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
