@@ -44,7 +44,7 @@ spec:
           {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ template "node-app.fullname" $ }}-env
+                name: {{ template "app.fullname" $ }}-env
           {{- if Values.service.enabled }}
           ports:
             - name: http
