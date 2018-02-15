@@ -21,7 +21,7 @@ spec:
     spec:
       imagePullSecrets:
         - name: {{ template "app.fullname" $ }}-registrykey
-      {{- if .migrate }}
+      {{- if .Values.migrate }}
       initContainers:
         - name: {{ .Chart.Name }}-migration
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -36,12 +36,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.command }}
-          command: {{ .Values.command }}
-          {{- end }}
-          {{- if .Values.args }}
-          args: {{ .Values.args }}
-          {{- end }}
+          #{{- if .Values.command }}
+          #command: {{ .Values.command }}
+          #{{- end }}
+          #{{- if .Values.args }}
+          #args: {{ .Values.args }}
+          #{{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
