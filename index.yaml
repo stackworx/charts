@@ -3,16 +3,16 @@ entries:
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-02-15T23:27:21.407676+02:00
+    created: 2018-02-15T23:41:43.238244+02:00
     description: A Helm chart for Kubernetes
-    digest: c519a1f982294c3948b6d475ca09398804e52a944dbe65b24ac0fe64c29c2065
+    digest: 3005599c438ae229d80163b23c723b0296917eb69d9a1499a987515a37a94378
     name: app
     urls:
     - app-0.1.0.tgz
     version: 0.1.0
   nginx-static:
   - apiVersion: v1
-    created: 2018-02-15T23:27:21.408086+02:00
+    created: 2018-02-15T23:41:43.238587+02:00
     description: A Helm chart for Kubernetes
     digest: 30362449621753e865465d9a6ee733ce8297d6bd0029b9aae116b5b4e7eaadc8
     name: nginx-static
@@ -21,11 +21,11 @@ entries:
     version: 0.1.0
   node-app:
   - apiVersion: v1
-    created: 2018-02-15T23:27:21.408708+02:00
+    created: 2018-02-15T23:41:43.239112+02:00
     description: Flexible base node chart with postgres and redis
     digest: 972eda87a21176feb6a8f5e9ea89e5c792d00fe3789787a7adc00a270b23ef23
     name: node-app
     urls:
     - node-app-0.1.0.tgz
     version: 0.1.0
-generated: 2018-02-15T23:27:21.406938+02:00
+generated: 2018-02-15T23:41:43.237558+02:00

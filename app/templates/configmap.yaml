@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "node-app.fullname" $ }}-env
+  name: {{ template "app.fullname" $ }}-env
   labels:
-    app: {{ template "node-app.name" $ }}
+    app: {{ template "app.name" $ }}
     chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
     release: {{ $.Release.Name }}
     heritage: {{ $.Release.Service }}
