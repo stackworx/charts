@@ -1,0 +1,71 @@
+{{- range .Values.deployments }}
+---
+# Deployment: {{ .name }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "node-app.fullname" $ }}-{{ .name }}
+  labels:
+    app: {{ template "node-app.name" $ }}
+    component: {{ required "A name is required" .name }}
+    chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  replicas: {{ .replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "node-app.name" $ }}
+        component: {{ .name }}
+        release: {{ $.Release.Name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ template "node-app.fullname" $ }}-registrykey
+      {{- if .migrate }}
+      initContainers:
+        - name: {{ $.Chart.Name }}-{{ .name }}-migration
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "node-app.fullname" $ }}-env
+          command: {{ .migrate.command }}
+          args: {{ .migrate.args }}
+      {{- end }}
+      containers:
+        - name: {{ $.Chart.Name }}-{{ .name }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
+          {{- if .command }}
+          command: {{ .command }}
+          {{- end }}
+          {{- if .args }}
+          args: {{ .args }}
+          {{- end }}
+          # TODO make conditional
+          envFrom:
+            - configMapRef:
+                name: {{ template "node-app.fullname" $ }}-env
+          {{- if .service.enabled }}
+          ports:
+            - containerPort: {{ .service.internalPort }}
+          livenessProbe:
+            httpGet:
+              # TODO allow overriding
+              path: /
+              port: {{ .service.internalPort }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .service.internalPort }}
+          {{- end }}
+          resources:
+{{ toYaml .resources | indent 12 }}
+    {{- if .nodeSelector }}
+      nodeSelector:
+{{ toYaml .nodeSelector | indent 8 }}
+    {{- end }}
+# End Deployment: {{ .name }}
+...
+{{- end }}

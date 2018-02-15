@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Flexible base node chart with postgres and redis
+name: node-app
+version: 0.1.0

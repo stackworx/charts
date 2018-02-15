@@ -1,0 +1,29 @@
+{{- range .Values.deployments }}
+{{- if .service.enabled }}
+---
+# Service: {{ .name }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "node-app.fullname" $ }}-{{ .name }}
+  labels:
+    app: {{ template "node-app.name" $ }}
+    component: {{ .name }}
+    chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  type: {{ .service.type }}
+  ports:
+    - port: {{ .service.externalPort }}
+      targetPort: {{ .service.internalPort }}
+      protocol: TCP
+      name: {{ .service.name }}
+  selector:
+    app: {{ template "node-app.name" $ }}
+    component: {{ .name }}
+    release: {{ $.Release.Name }}
+# End Service: {{ .name }}
+...
+{{ end }}
+{{- end }}
