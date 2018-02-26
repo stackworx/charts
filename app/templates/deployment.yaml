@@ -23,6 +23,7 @@ spec:
       imagePullSecrets:
         - name: {{ template "app.fullname" $ }}-registrykey
       {{- end }}
+      {{- if .Values.migration }}
       {{- if .Values.migration.enabled }}
       initContainers:
         - name: {{ .Chart.Name }}-migration
@@ -33,6 +34,7 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           command: {{ .Values.migration.command }}
           args: {{ .Values.migration.args }}
+      {{- end }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
