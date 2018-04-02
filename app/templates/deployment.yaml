@@ -41,10 +41,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.command }}
-          command: {{ .Values.command }}
+          command: {{ toYaml .Values.command }}
           {{- end }}
           {{- if .Values.args }}
-          args: {{ .Values.args }}
+          args: {{ toYaml .Values.args }}
           {{- end }}
           envFrom:
             - configMapRef:
