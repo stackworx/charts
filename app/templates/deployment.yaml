@@ -49,6 +49,10 @@ spec:
           {{- if .Values.args }}
           args: {{ toYaml .Values.args }}
           {{- end }}
+          {{- if .Values.env }}
+          env:
+{{ toYaml .Values.env | indent 10 }}
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
