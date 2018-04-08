@@ -18,6 +18,8 @@ spec:
       labels:
         app: {{ template "app.name" . }}
         release: {{ .Release.Name }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
       {{- if .Values.imageCredentials }}
       imagePullSecrets:
