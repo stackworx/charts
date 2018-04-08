@@ -53,14 +53,14 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          {{- if .Values.service.enabled }}
+          {{- if .Values.probes.enabled }}
           livenessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.probes.liveness.path | default "/" }}
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.probes.readiness.path | default "/" }}
               port: http
           {{- end }}
           resources:

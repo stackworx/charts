@@ -9,7 +9,18 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
+probes: {
+  enabled: true,
+  liveness: {
+    path: /
+  },
+  readiness: {
+    path: /
+  }
+}
+
 service:
+  enabled: true
   type: ClusterIP
   port: 80
 
