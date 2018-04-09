@@ -3,12 +3,12 @@ entries:
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-04-08T23:49:23.028029+02:00
+    created: 2018-04-09T15:59:53.147385+02:00
     description: A Helm chart for Kubernetes
-    digest: ea518ce5ec6393bdcd731aec712fcdad0047a4313b0cd2e4978ef9f41ecc040d
+    digest: 38df5af3d24d089c4fa5aecb140558e731452700691fd26a4a30a1bee6087810
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: app
     urls:
     - app-0.1.0.tgz
     version: 0.1.0
-generated: 2018-04-08T23:49:23.027448+02:00
+generated: 2018-04-09T15:59:53.146787+02:00
