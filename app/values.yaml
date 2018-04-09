@@ -9,15 +9,6 @@ image:
   repository: nginx
   tag: stable
   pullPolicy: IfNotPresent
-secrets:
-  - name: SECRET_USERNAME
-    ref:
-      name: mysecret
-      key: username
-  - name: SECRET_PASSWORD
-    ref:
-      name: mysecret
-      key: password
 env: 
 - name: POSTGRES_PASSWORD
   valueFrom:

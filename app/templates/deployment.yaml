@@ -49,16 +49,6 @@ spec:
           {{- if .Values.args }}
           args: {{ toYaml .Values.args }}
           {{- end }}
-          {{- if .Values.secrets }}
-          env:
-          {{- range .Values.secrets }}
-            - name: .name
-              valueFrom:
-                secretKeyRef:
-                  name: .ref.name
-                  key: .ref.key
-          {{- end }}
-          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
