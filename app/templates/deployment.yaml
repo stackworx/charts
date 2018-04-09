@@ -37,6 +37,16 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           command: {{ .Values.migration.command }}
           args: {{ .Values.migration.args }}
+          {{- if .Values.secrets }}
+          env:
+          {{- range .Values.secrets }}
+            - name: {{ .name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .ref.name }}
+                  key: {{ .ref.key }}
+          {{- end }}
+          {{- end }}
       {{- end }}
       {{- end }}
       containers:
