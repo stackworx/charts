@@ -9,12 +9,12 @@ image:
   repository: nginx
   tag: stable
   pullPolicy: IfNotPresent
-env: 
-- name: POSTGRES_PASSWORD
-  valueFrom:
-    secretKeyRef:
-    name: secret
-    key: postgres-password
+env: {}
+#secrets:
+#  - name: PG_PASSWORD
+#    ref: 
+#      name: pg-secret
+#      key: password
 probes: {
   enabled: true,
   liveness: {
