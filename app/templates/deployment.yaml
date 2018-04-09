@@ -55,8 +55,8 @@ spec:
             - name: .name
               valueFrom:
                 secretKeyRef:
-                  name: .ref.name
-                  key: .ref.key
+                  name: {{ .ref.name }}
+                  key: {{ .ref.key }}
           {{- end }}
           {{- end }}
           envFrom:
