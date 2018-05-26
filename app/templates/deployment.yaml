@@ -33,7 +33,7 @@ spec:
         {{- if .Values.migration.image }}
           image: "{{ .Values.migration.image.repository }}:{{ .Values.migration.image.tag }}"
           imagePullPolicy: {{ .Values.migration.image.pullPolicy }}
-        {{- else -}}
+        {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
         {{- end }}
