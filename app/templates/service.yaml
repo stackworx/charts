@@ -11,8 +11,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: {{ .Values.service.internalPort | default "80" }}
+      targetPort: {{ .Values.service.externalPort | default "80" }}
       protocol: TCP
       name: http
   selector:
