@@ -6,43 +6,41 @@ replicaCount: 1
 revisionHistoryLimit: 5
 
 image:
-  repository: nginx
-  tag: stable
+  repository: registry.gitlab.com/stackworx.io/<image>
+  tag: develop
   pullPolicy: IfNotPresent
-env: {}
-#secrets:
-#  - name: PG_PASSWORD
-#    ref: 
-#      name: pg-secret
-#      key: password
-probes: {
-  enabled: true,
-  liveness: {
-    path: /
-  },
-  readiness: {
-    path: /
-  }
-}
-
+imageCredentials:
+  registry: registry.gitlab.com
 service:
   enabled: true
   type: ClusterIP
-  port: 80
-
+  externalPort: 80
+  internalPort: 80
 ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /
+  enabled: true
   hosts:
-    - chart-example.local
-
+    - <hostname>
+  annotations:
+    kubernetes.io/ingress.class: traefik
 resources: {}
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+probes: {
+  enabled: true,
+  liveness: {
+    path: /health
+  },
+  readiness: {
+    path: /health
+  }
+}
+migration:
+  enabled: true
+  # Omit image if you want to use same image as above
+  image:
+    repository: registry.gitlab.com/stackworx.io/<image>
+    tag: develop
+    pullPolicy: IfNotPresent
+  command: ['yarn']
+  args: ['migrate']
+env: {}
+nodeSelector:
+  type: apps
