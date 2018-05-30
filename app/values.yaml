@@ -34,11 +34,6 @@ probes: {
 }
 migration:
   enabled: false
-  # Omit image if you want to use same image as above
-  #image:
-  #  repository: registry.gitlab.com/stackworx.io/<image>
-  #  tag: develop
-  #  pullPolicy: IfNotPresent
   command: ['yarn']
   args: ['migrate']
 env: {}

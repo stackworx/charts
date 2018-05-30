@@ -30,13 +30,8 @@ spec:
       {{- if .Values.migration.enabled }}
       initContainers:
         - name: {{ .Chart.Name }}-migration
-        {{- if .Values.migration.image }}
-          image: "{{ .Values.migration.image.repository }}:{{ .Values.migration.image.tag }}"
-          imagePullPolicy: {{ .Values.migration.image.pullPolicy }}
-        {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-        {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
