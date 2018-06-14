@@ -24,7 +24,7 @@ spec:
     spec:
       {{- if .Values.volumes }}
       volumes:
-{{ toYaml .Values.resources | indent 8 }}
+{{ toYaml .Values.volumes | indent 8 }}
       {{- end }}
       {{- if .Values.imageCredentials }}
       imagePullSecrets:
