@@ -78,7 +78,7 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           {{- if .Values.volumeMounts }}
           volumeMounts:
-{{ toYaml .Values.resources | indent 12 }}
+{{ toYaml .Values.volumeMounts | indent 12 }}
           {{- end }}
           ports:
             - name: http
