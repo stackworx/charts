@@ -39,3 +39,7 @@ migration:
 env: {}
 nodeSelector:
   type: apps
+
+# https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#add-configmap-data-to-a-volume
+# volumeMounts: {}
+# volumes: {}
