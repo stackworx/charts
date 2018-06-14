@@ -74,7 +74,7 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.service.internalPort | default "80" }}
               protocol: TCP
           {{- if .Values.probes.enabled }}
           livenessProbe:
