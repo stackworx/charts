@@ -1,0 +1,39 @@
+image:
+  repository: registry.gitlab.com/stackworx.io/air-shopping-deploy
+  tag: develop
+  pullPolicy: Always
+imageCredentials:
+  registry: registry.gitlab.com
+service:
+  enabled: true
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 8080
+ingress:
+  enabled: true
+  hosts:
+    - air-shopping.dev.stackworx.cloud
+  annotations:
+    kubernetes.io/ingress.class: traefik
+resources: {}
+probes: {
+  enabled: true,
+  liveness: {
+    path: /ping
+  },
+  readiness: {
+    path: /ping
+  }
+}
+volumeMounts:
+- name: config-volume
+  mountPath: /usr/build/build/fixtures/
+volumes:
+  - name: config-volume
+    configMap:
+      name: fixture-config
+migration:
+  enabled: false
+env: {}
+nodeSelector:
+  type: apps
