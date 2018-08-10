@@ -61,7 +61,7 @@ spec:
           command: {{ toYaml .Values.command }}
           {{- end }}
           {{- if .Values.args }}
-          args: {{ toYaml .Values.args }}
+          args: {{ .Values.args }}
           {{- end }}
           {{- if .Values.secrets }}
           env:
