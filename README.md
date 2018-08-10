@@ -9,6 +9,10 @@ Any changes should include a chart version bump
 
 Sample `requirements.yaml`.
 
+## Debugging Chart
+
+    helm install ./ --name debug --dry-run --debug --namespace default > debug.yaml
+
 This contains a frontend, backend, scheduler, postgres database and redis instance
 
     dependencies:

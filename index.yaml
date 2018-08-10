@@ -3,7 +3,17 @@ entries:
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.589979489+02:00
+    created: 2018-08-10T13:08:52.889979319+02:00
+    description: A Helm chart for Kubernetes
+    digest: c9e6cf38cf39ecb0b5f60e249073dfd3af5c9027fd3fa248445da1eff4c17a20
+    icon: http://stackworx.io/logo-versions/white-512x512.png
+    name: app
+    urls:
+    - app-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-08-10T13:08:52.889632392+02:00
     description: A Helm chart for Kubernetes
     digest: e4201ea463314bf4659f991005a76b0b8702091b388a59e1dfe14aeca87f90e0
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -13,7 +23,7 @@ entries:
     version: 0.1.5
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.589694793+02:00
+    created: 2018-08-10T13:08:52.888826889+02:00
     description: A Helm chart for Kubernetes
     digest: 5318bccd61a9d53be6b1d1ce33262bf678600c92247b0a0deeebb48d5d4e90ce
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -23,7 +33,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.589419842+02:00
+    created: 2018-08-10T13:08:52.888042624+02:00
     description: A Helm chart for Kubernetes
     digest: 307b39637a9375b0b798cfdfb6639694f1d21fd32ec06b91c6a1c6db80c00000
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -33,7 +43,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.589144751+02:00
+    created: 2018-08-10T13:08:52.887246307+02:00
     description: A Helm chart for Kubernetes
     digest: 33a8e32831879de6f9db1df43678d103b53713908ca5e34d85db35d14a3ec742
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -43,7 +53,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.588847128+02:00
+    created: 2018-08-10T13:08:52.886456977+02:00
     description: A Helm chart for Kubernetes
     digest: badb2a188b5c4e9ec4ea8044aea202e025fd3bd7558cc3163be1edcaa4447856
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -53,7 +63,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-06-14T17:33:01.588543531+02:00
+    created: 2018-08-10T13:08:52.88618341+02:00
     description: A Helm chart for Kubernetes
     digest: 8fda8abff9814b9e15a339a6004fc0ce504bdeeb3b85dbec30b18f04651e7561
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -61,4 +71,4 @@ entries:
     urls:
     - app-0.1.0.tgz
     version: 0.1.0
-generated: 2018-06-14T17:33:01.587953059+02:00
+generated: 2018-08-10T13:08:52.885299404+02:00
