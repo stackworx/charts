@@ -4,18 +4,31 @@
 
 cronjob:
   # At 01:00 every day
-  schedule: "0 1 * * *"
+  schedule: "*/5 * * * *"
   annotations: {}
   concurrencyPolicy: ""
   failedJobsHistoryLimit: ""
   successfulJobsHistoryLimit: ""
 
+config: 
+  s3:
+    region: 'eu-west-2'
+    access_key_id: 'AKIAISGOFSURAVAOOBSA'
+    secret_access_key: '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'
+    bucket: 'stackworx-k8-dev-database-backup/backup'
+    prefix: 'backup'
+  postgres:
+    database: ''
+    user: 'postgres'
+    password: 'pYFgF8uLFz' 
+    host: '10.244.0.131' 
+  
 pod:
   annotations: {}
-  
+
 image:
-  repository: nginx
-  tag: stable
+  repository: schickling/postgres-backup-s3
+  tag: latest
   pullPolicy: IfNotPresent
 
 resources: {}

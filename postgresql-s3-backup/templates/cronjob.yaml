@@ -1,14 +1,14 @@
 apiVersion: {{ template "cronjob.apiVersion" . }}
 kind: CronJob
 metadata:
-  name: {{ template "progresql-s3-backup.fullname" . }}
+  name: {{ template "postgresql-backup-s3.fullname" . }}
   labels:
-    app: {{ template "progresql-s3-backup.name" . }}
-    chart: {{ template "progresql-s3-backup.chart" . }}
+    app: {{ template "postgresql-backup-s3.name" . }}
+    chart: {{ template "postgresql-backup-s3.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
   annotations: 
-{{ toYaml .Values.cronjob.annotations | indent 4 }}
+  {{ toYaml .Values.cronjob.annotations | indent 4 }}
 spec:
   schedule: "{{ .Values.cronjob.schedule }}"
   {{- with .Values.cronjob.concurrencyPolicy }}
@@ -25,18 +25,11 @@ spec:
       template:
         metadata:
           labels:
-            app: {{ template "progresql-s3-backup.name" . }}
+            app: {{ template "postgresql-backup-s3.name" . }}
             release: {{ .Release.Name }}
           annotations: 
 {{ toYaml .Values.pod.annotations | indent 12 }}
         spec:
-          volumes:
-            - name: config-volume
-              configMap:
-                name: {{ template "progresql-s3-backup.fullname" . }}-config
-{{- if .Values.extraVolumes }}
-{{ toYaml .Values.extraVolumes | indent 12 }}
-{{- end }}
           restartPolicy: Never
 {{- if .Values.priorityClassName }}
           priorityClassName: "{{ .Values.priorityClassName }}"
@@ -45,14 +38,9 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              volumeMounts:
-                - name: config-volume
-                  mountPath: /etc/es-curator
-{{- if .Values.extraVolumeMounts }}
-{{ toYaml .Values.extraVolumeMounts | indent 16 }}
-{{- end }}
-              command: [ "curator" ]
-              args: [ "--config", "/etc/es-curator/config.yml", "/etc/es-curator/action_file.yml" ]
+              envFrom:
+                - configMapRef:
+                    name: {{ template "postgresql-backup-s3.fullname" $ }}
               resources:
 {{ toYaml .Values.resources | indent 16 }}
     {{- with .Values.nodeSelector }}
