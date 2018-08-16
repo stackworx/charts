@@ -4,7 +4,7 @@
 
 cronjob:
   # At 01:00 every day
-  schedule: "*/5 * * * *"
+  schedule: "0 0 */1 * *"
   annotations: {}
   concurrencyPolicy: ""
   failedJobsHistoryLimit: ""
@@ -13,15 +13,12 @@ cronjob:
 config: 
   s3:
     region: 'eu-west-2'
-    access_key_id: 'AKIAISGOFSURAVAOOBSA'
-    secret_access_key: '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'
-    bucket: 'stackworx-k8-dev-database-backup/backup'
-    prefix: 'backup'
+    bucket: 'stackworx-k8-dev-database-backup'
+    prefix: ''
   postgres:
     database: ''
-    user: 'postgres'
-    password: 'pYFgF8uLFz' 
-    host: '10.244.0.131' 
+    user: ''
+    host: '' 
   
 pod:
   annotations: {}

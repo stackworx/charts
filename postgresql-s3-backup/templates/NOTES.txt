@@ -1,0 +1,5 @@
+Create the secret needed with the following commands:
+1) echo -n s3_access_key_id value > ./access_key_id.txt
+2) echo -n s3_secret_access_key_id value > ./secret_access_key.txt
+3) kubectl create secret generic s3-secrets --from-file=./access_key_id.txt --from-file=./secret_access_key.txt 
+4) if everything works then delete the text files since it not needed to push it to the repo
