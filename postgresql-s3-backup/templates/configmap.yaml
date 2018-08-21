@@ -10,8 +10,8 @@ metadata:
 data:
     S3_REGION: {{ .Values.config.s3.region}}
     S3_BUCKET: {{ .Values.config.s3.bucket}}
-    S3_PREFIX: {{ required "Please provide a prefix!" .Values.config.s3.prefix}}
-    POSTGRES_HOST: {{ required "Please provide a host port!" .Values.config.postgres.host}}
+    S3_PREFIX: {{ required "Please provide a prefix" .Values.config.s3.prefix}}
+    POSTGRES_HOST: {{ required "Please provide a host port" .Values.config.postgres.host}}
     POSTGRES_DATABASE: {{ .Values.config.postgres.database}}
-    POSTGRES_USER: {{ required "Please provide a username!" .Values.config.postgres.user}}
-    POSTGRES_EXTRA_OPTS: {{ .Values.config.postgres.extra_opts}}
+    POSTGRES_USER: {{ required "Please provide a username" .Values.config.postgres.user}}
+    POSTGRES_EXTRA_OPTS: {{ .Values.config.postgres.extraOpts}}

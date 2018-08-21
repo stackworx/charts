@@ -6,18 +6,18 @@ cronjob:
   # At 01:00 every day
   schedule: ""
   annotations: {}
-  concurrencyPolicy: ""
-  failedJobsHistoryLimit: ""
-  successfulJobsHistoryLimit: ""
+  concurrencyPolicy: "Forbid"
+  failedJobsHistoryLimit: "3"
+  successfulJobsHistoryLimit: "3"
 
 config: 
   s3:
     region: 'eu-west-2'
     bucket: 'stackworx-k8-dev-database-backup'
     #prefix: 'bucket'
-  #postgres:
-    #database: 'postgres'
-    #user: 'postgres'
+  postgres:
+    database: 'postgres'
+    user: 'postgres'
     #host: 'host port or name' 
   
 pod:
