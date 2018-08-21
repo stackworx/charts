@@ -14,11 +14,11 @@ config:
   s3:
     region: 'eu-west-2'
     bucket: 'stackworx-k8-dev-database-backup'
-    prefix: ''
-  postgres:
-    database: ''
-    user: ''
-    host: '' 
+    #prefix: 'bucket'
+  #postgres:
+    #database: 'postgres'
+    #user: 'postgres'
+    #host: 'host port or name' 
   
 pod:
   annotations: {}
