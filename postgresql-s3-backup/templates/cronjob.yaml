@@ -10,7 +10,7 @@ metadata:
   annotations: 
   {{ toYaml .Values.cronjob.annotations | indent 4 }}
 spec:
-  schedule: "{{ .Values.cronjob.schedule }}"
+  schedule: "{{ list (randNumeric 1) "0 */1 * *" | join " " }}"
   {{- with .Values.cronjob.concurrencyPolicy }}
   concurrencyPolicy: {{ . }}
   {{- end }}

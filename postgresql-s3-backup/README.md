@@ -1,5 +1,5 @@
 Creation of the Cronjob
-- the cronjob is create to make regular backups once at midnight.
+- the cronjob is create to make regular backups once at between 00 : 00 and 01 : 00.
 - it is created to make buckups of postgres database data.
 - integrated with amazon-s3 bucket
 

@@ -8,10 +8,10 @@ metadata:
     release: {{ $.Release.Name }}
     heritage: {{ $.Release.Service }}
 data:
-    S3_REGION: {{ default "eu-west-2" .Values.config.s3.region }}
+    S3_REGION: {{ .Values.config.s3.region}}
     S3_BUCKET: {{ .Values.config.s3.bucket}}
-    S3_PREFIX: {{ .Values.config.s3.prefix}}
-    POSTGRES_HOST: {{ .Values.config.postgres.host}}
+    S3_PREFIX: {{ required "Please provide a prefix!" .Values.config.s3.prefix}}
+    POSTGRES_HOST: {{ required "Please provide a host port!" .Values.config.postgres.host}}
     POSTGRES_DATABASE: {{ .Values.config.postgres.database}}
-    POSTGRES_USER: {{ .Values.config.postgres.user}}
+    POSTGRES_USER: {{ required "Please provide a username!" .Values.config.postgres.user}}
     POSTGRES_EXTRA_OPTS: {{ .Values.config.postgres.extra_opts}}
