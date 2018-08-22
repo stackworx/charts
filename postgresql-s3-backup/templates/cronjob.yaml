@@ -52,7 +52,7 @@ spec:
                 - name: POSTGRES_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: {{ required "Please provide a postgres secret name" .Values.config.postgres.secret}}
+                      name: {{ required "Please provide a postgres secret name" .Values.config.postgres.secret.name}}
                       key: {{ .Values.config.postgres.secret.password }}
               envFrom:
                 - configMapRef:
