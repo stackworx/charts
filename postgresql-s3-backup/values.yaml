@@ -15,10 +15,13 @@ config:
     region: 'eu-west-2'
     bucket: 'stackworx-k8-dev-database-backup'
     #prefix: 'bucket'
+    #secret: ''
   postgres:
     database: 'postgres'
     user: 'postgres'
-    #host: 'host port or name' 
+    #secret: ''
+    #host: 'host port or name'
+   
   
 pod:
   annotations: {}

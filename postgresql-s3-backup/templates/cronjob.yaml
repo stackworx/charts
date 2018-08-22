@@ -42,17 +42,17 @@ spec:
                 - name: S3_ACCESS_KEY_ID
                   valueFrom:
                     secretKeyRef:
-                      name: s3-secrets
-                      key: access_key_id
+                      name: .Values.config.s3.secret
+                      key: accessKeyId
                 - name: S3_SECRET_ACCESS_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: s3-secrets
-                      key: secret_access_key
+                      name: .Values.config.s3.secret
+                      key: secretAccessKey
                 - name: POSTGRES_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: testing-postgresql
+                      name: .Values.config.postgres.secret
                       key: postgres-password
               envFrom:
                 - configMapRef:
