@@ -1,0 +1,5 @@
+Please make sure that you have a secret uploaded before you install the chart.
+Create the secret needed with the following commands:
+1) echo -n s3_access_key_id value > ./access_key_id
+2) echo -n s3_secret_access_key_id value > ./secret_access_key 
+3) if everything works then delete the text files since it not needed to push it to the repo
