@@ -15,5 +15,3 @@ data:
     POSTGRES_DATABASE: {{ .Values.config.postgres.database}}
     POSTGRES_USER: {{ required "Please provide a username" .Values.config.postgres.user}}
     POSTGRES_EXTRA_OPTS: {{ .Values.config.postgres.extraOpts}}
-    POSTGRES_SECRET: {{ required "Please provide a postgres secret name" .Values.config.postgres.secret}}
-    SECRET: {{ required "Please provide a secret name" .Values.config.s3.secret}}

@@ -15,11 +15,16 @@ config:
     region: 'eu-west-2'
     bucket: 'stackworx-k8-dev-database-backup'
     #prefix: 'bucket'
-    #secret: ''
+    secret: 
+     #name: ''
+     accessKeyIdKey: 'access_key_id'
+     secretAccessKey: 'secret_access_key'
   postgres:
     database: 'postgres'
     user: 'postgres'
-    #secret: ''
+    secret:
+      #name: ''
+      password: 'postgres_password'
     #host: 'host port or name'
    
   
