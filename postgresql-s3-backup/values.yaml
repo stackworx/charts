@@ -24,7 +24,7 @@ config:
     user: 'postgres'
     secret:
       #name: ''
-      password: 'postgres_password'
+      password: 'postgres-password'
     #host: 'host port or name'
    
   
