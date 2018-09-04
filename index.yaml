@@ -3,9 +3,9 @@ entries:
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.786384505+02:00
+    created: 2018-09-04T14:45:24.469375104+02:00
     description: A Helm chart for Kubernetes
-    digest: b7bd542ca52ebb2eb9a2335dab5bb6ce3d2d95acf37bbd58cae00825727e5547
+    digest: aaea11122e923242aac1e3afd4099b170bca93f6935efeb445f9d5fa685bcb11
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: app
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.1.7
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.786040128+02:00
+    created: 2018-09-04T14:45:24.469009177+02:00
     description: A Helm chart for Kubernetes
     digest: b4ac0b27fbca045fc22e4ee9da907d19d5e212a11e1ad5992aedb34a3e393653
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -23,7 +23,7 @@ entries:
     version: 0.1.6
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.785719999+02:00
+    created: 2018-09-04T14:45:24.468350039+02:00
     description: A Helm chart for Kubernetes
     digest: e4201ea463314bf4659f991005a76b0b8702091b388a59e1dfe14aeca87f90e0
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -33,7 +33,7 @@ entries:
     version: 0.1.5
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.785416164+02:00
+    created: 2018-09-04T14:45:24.467723573+02:00
     description: A Helm chart for Kubernetes
     digest: 5318bccd61a9d53be6b1d1ce33262bf678600c92247b0a0deeebb48d5d4e90ce
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -43,7 +43,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.785107805+02:00
+    created: 2018-09-04T14:45:24.467124061+02:00
     description: A Helm chart for Kubernetes
     digest: 307b39637a9375b0b798cfdfb6639694f1d21fd32ec06b91c6a1c6db80c00000
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -53,7 +53,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.784818819+02:00
+    created: 2018-09-04T14:45:24.466482067+02:00
     description: A Helm chart for Kubernetes
     digest: 33a8e32831879de6f9db1df43678d103b53713908ca5e34d85db35d14a3ec742
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -63,7 +63,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.784525551+02:00
+    created: 2018-09-04T14:45:24.465864349+02:00
     description: A Helm chart for Kubernetes
     digest: badb2a188b5c4e9ec4ea8044aea202e025fd3bd7558cc3163be1edcaa4447856
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -73,7 +73,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.784226779+02:00
+    created: 2018-09-04T14:45:24.465175981+02:00
     description: A Helm chart for Kubernetes
     digest: 8fda8abff9814b9e15a339a6004fc0ce504bdeeb3b85dbec30b18f04651e7561
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -84,12 +84,12 @@ entries:
   postgresql-s3-backup:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-04T14:40:39.786686024+02:00
+    created: 2018-09-04T14:45:24.469695232+02:00
     description: A Backup cronjob that saves backup in the s3 AWS bucket
-    digest: 6edcc1e84ed7f8f4aedf61b8613e51e31b54cb59aa8791c8c1bae70d9647d5ee
+    digest: 521606b18a90f110cb0fa139e18c35393f240bea18723d8c0ac96ed29674266c
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: postgresql-s3-backup
     urls:
     - postgresql-s3-backup-0.1.0.tgz
     version: 0.1.0
-generated: 2018-09-04T14:40:39.783661708+02:00
+generated: 2018-09-04T14:45:24.462459425+02:00

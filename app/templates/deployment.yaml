@@ -39,12 +39,12 @@ spec:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
 {{- if .Values.migration.command }}
-        command:
-{{ toYaml .Values.migration.command | indent 10 }}
+          command:
+{{ toYaml .Values.migration.command | indent 12 }}
 {{- end }}
 {{- if .Values.migration.args }}
-        args:
-{{ toYaml .Values.migration.args | indent 10 }}
+          args:
+{{ toYaml .Values.migration.args | indent 12 }}
 {{- end }}
           {{- if .Values.secrets }}
           env:
@@ -62,12 +62,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- if .Values.command }}
-        command:
-{{ toYaml .Values.command | indent 10 }}
+          command:
+{{ toYaml .Values.command | indent 12 }}
 {{- end }}
 {{- if .Values.args }}
-        args:
-{{ toYaml .Values.args | indent 10 }}
+          args:
+{{ toYaml .Values.args | indent 12 }}
 {{- end }}
           {{- if .Values.secrets }}
           env:
