@@ -39,8 +39,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
-          command: {{ toYaml .Values.migration.command }}
-          args: {{ toYaml .Values.migration.args }}
+          command: {{ .Values.migration.command }}
+          args: {{ .Values.migration.args }}
           {{- if .Values.secrets }}
           env:
           {{- range .Values.secrets }}
