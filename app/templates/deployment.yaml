@@ -89,10 +89,12 @@ spec:
             httpGet:
               path: {{ .Values.probes.liveness.path | default "/" }}
               port: http
+              timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds | default 1 }}
           readinessProbe:
             httpGet:
               path: {{ .Values.probes.readiness.path | default "/" }}
               port: http
+              timeoutSeconds: {{ .Values.probes.readiness.timeoutSeconds | default 1 }}
           {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}

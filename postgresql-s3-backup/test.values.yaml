@@ -1,0 +1,16 @@
+config:
+  s3:
+    region: "eu-west-2"
+    bucket: "stackworx-k8-dev-database-backup"
+    prefix: "bucket"
+    secret:
+      name: "secret"
+      accessKeyIdKey: "access_key_id"
+      secretAccessKey: "secret_access_key"
+  postgres:
+    database: "postgres"
+    user: "postgres"
+    secret:
+      name: "secret"
+      password: "postgres-password"
+    host: "host"
