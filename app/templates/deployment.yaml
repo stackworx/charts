@@ -39,8 +39,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
-          command: {{ .Values.migration.command }}
-          args: {{ .Values.migration.args }}
+{{- if .Values.migration.command }}
+        command:
+{{ toYaml .Values.migration.command | indent 10 }}
+{{- end }}
+{{- if .Values.migration.args }}
+        args:
+{{ toYaml .Values.migration.args | indent 10 }}
+{{- end }}
           {{- if .Values.secrets }}
           env:
           {{- range .Values.secrets }}
@@ -57,12 +63,14 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.command }}
-          command: {{ toYaml .Values.command }}
-          {{- end }}
-          {{- if .Values.args }}
-          args: {{ .Values.args }}
-          {{- end }}
+{{- if .Values.command }}
+        command:
+{{ toYaml .Values.command | indent 10 }}
+{{- end }}
+{{- if .Values.args }}
+        args:
+{{ toYaml .Values.args | indent 10 }}
+{{- end }}
           {{- if .Values.secrets }}
           env:
           {{- range .Values.secrets }}
