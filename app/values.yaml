@@ -23,8 +23,6 @@ debugService:
   internalPort: 8080
 ingress:
   enabled: true
-  hosts:
-    - <hostname>
   annotations:
     kubernetes.io/ingress.class: traefik
 resources: {}
