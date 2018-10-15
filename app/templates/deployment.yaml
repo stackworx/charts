@@ -90,16 +90,22 @@ spec:
             - name: http
               containerPort: {{ .Values.service.internalPort | default "80" }}
               protocol: TCP
+            # Port for debug, prometheus etc
+            {{- if .Values.debugService.enabled }}
+            - name: debug
+              containerPort: {{ .Values.debugService.internalPort }}
+              protocol: TCP
+            {{- end }}
           {{- if .Values.probes.enabled }}
           livenessProbe:
             httpGet:
               path: {{ .Values.probes.liveness.path | default "/" }}
-              port: http
+              port: {{ .Values.probes.liveness.port | default "http" }}
               timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds | default 1 }}
           readinessProbe:
             httpGet:
               path: {{ .Values.probes.readiness.path | default "/" }}
-              port: http
+              port: {{ .Values.probes.readiness.port | default "http" }} 
               timeoutSeconds: {{ .Values.probes.readiness.timeoutSeconds | default 1 }}
           {{- end }}
           resources:

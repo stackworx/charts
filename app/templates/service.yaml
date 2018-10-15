@@ -19,3 +19,25 @@ spec:
     app: {{ template "app.name" . }}
     release: {{ .Release.Name }}
 {{- end }}
+---
+{{- if .Values.debugService.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "app.fullname-debug" . }}
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.debugService.type }}
+  ports:
+    - port: {{ .Values.debugService.externalPort | default "80" }}
+      targetPort: {{ .Values.debugService.internalPort | default "80" }}
+      protocol: TCP
+      name: debug
+  selector:
+    app: {{ template "app.name" . }}
+    release: {{ .Release.Name }}
+{{- end }}
