@@ -22,7 +22,7 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
-      {{- if .Values.volumes }}
+      {{- if or (.Values.volumes) (.Values.secretVolumes) }}
       volumes:
       {{- if .Values.secretVolumes }}
       {{- range .Values.secretVolumes }}
