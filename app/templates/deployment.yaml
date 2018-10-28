@@ -24,6 +24,13 @@ spec:
     spec:
       {{- if .Values.volumes }}
       volumes:
+      {{- if .Values.secretVolumes }}
+      {{- range .Values.secretVolumes }}
+        - name: {{ .volumeName }}
+          secret: 
+            secretName: {{ .secretName }}
+      {{- end }} 
+      {{- end }}
 {{ toYaml .Values.volumes | indent 8 }}
       {{- end }}
       {{- if .Values.imageCredentials }}
@@ -45,8 +52,8 @@ spec:
 {{- if .Values.migration.args }}
           args:
 {{ toYaml .Values.migration.args | indent 12 }}
-{{- end }}
-          {{- if .Values.secrets }}
+          {{- end }}
+{{- if .Values.secrets }}
           env:
           {{- range .Values.secrets }}
             - name: {{ .name }}
@@ -56,7 +63,7 @@ spec:
                   key: {{ .ref.key }}
           {{- end }}
           {{- end }}
-      {{- end }}
+  {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -84,6 +91,12 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           {{- if .Values.volumeMounts }}
           volumeMounts:
+          {{- if .Values.secretVolumes }}
+          {{- range .Values.secretVolumes }}
+            - name: {{ .volumeName }}
+              mountPath: {{ .mountPath }}
+          {{- end }} 
+          {{- end }}
 {{ toYaml .Values.volumeMounts | indent 12 }}
           {{- end }}
           ports:

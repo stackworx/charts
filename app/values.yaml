@@ -45,3 +45,7 @@ nodeSelector: {}
 # https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#add-configmap-data-to-a-volume
 # volumeMounts: {}
 # volumes: {}
+# secretVolumes:
+#   - volumeName: 'tls'
+#     mountPath: '/tls'
+#     secretName: 'secret'

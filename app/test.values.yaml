@@ -32,6 +32,10 @@ volumes:
   - name: config-volume
     configMap:
       name: fixture-config
+secretVolumes:
+  - volumeName: 'tls'
+    mountPath: '/tls'
+    secretName: 'secret'
 migration:
   enabled: false
 env: {}
