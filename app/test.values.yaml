@@ -19,7 +19,8 @@ resources: {}
 probes: {
   enabled: true,
   liveness: {
-    path: /ping
+    path: /ping,
+    scheme: HTTPS
   },
   readiness: {
     path: /ping
