@@ -91,7 +91,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "app.fullname" $ }}-env
-          {{- if .Values.volumeMounts }}
+          {{- if or (.Values.volumeMounts) (.Values.secretVolumes) }}
           volumeMounts:
           {{- if .Values.secretVolumes }}
           {{- range .Values.secretVolumes }}
@@ -99,7 +99,9 @@ spec:
               mountPath: {{ .mountPath }}
           {{- end }} 
           {{- end }}
+          {{- if .Values.volumeMounts }}
 {{ toYaml .Values.volumeMounts | indent 12 }}
+          {{- end }}
           {{- end }}
           ports:
             - name: http
