@@ -26,8 +26,8 @@ probes: {
   }
 }
 volumeMounts:
-- name: config-volume
-  mountPath: /usr/build/build/fixtures/
+  - name: config-volume
+    mountPath: /usr/build/build/fixtures/
 volumes:
   - name: config-volume
     configMap:
