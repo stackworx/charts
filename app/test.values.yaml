@@ -6,9 +6,10 @@ imageCredentials:
   registry: registry.gitlab.com
 service:
   enabled: true
-  type: ClusterIP
+  type: NodePort
   externalPort: 80
   internalPort: 8080
+  nodePort: 38080
 ingress:
   enabled: true
   hosts:
