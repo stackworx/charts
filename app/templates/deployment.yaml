@@ -7,6 +7,10 @@ metadata:
     chart: {{ template "app.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+  annotations:
+{{- if .Values.deployment.annotations }}
+{{ toYaml .Values.deployment.annotations | indent 4 }}
+{{- end }}
 spec:
   replicas: {{ default 1 .Values.replicaCount }}
   revisionHistoryLimit: {{ default 3 .Values.revisionHistoryLimit }}
@@ -21,6 +25,9 @@ spec:
         release: {{ .Release.Name }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+{{- if .Values.deployment.template.annotations }}
+{{ toYaml .Values.deployment.template.annotations | indent 8 }}
+{{- end }}
     spec:
       {{- if or (.Values.volumes) (.Values.secretVolumes) }}
       volumes:

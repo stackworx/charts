@@ -21,6 +21,10 @@ debugService:
   type: ClusterIP
   externalPort: 80
   internalPort: 8080
+deployment:
+  annotations: {}
+  template:
+    annotations: {}
 ingress:
   enabled: true
   annotations:
