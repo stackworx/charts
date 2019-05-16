@@ -1,0 +1,75 @@
+oauth-public:
+  image:
+    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server
+    tag: master
+    pullPolicy: IfNotPresent
+  imageCredentials:
+    registry: registry.gitlab.com
+  service:
+    enabled: true
+    type: ClusterIP
+    externalPort: 80
+    internalPort: 4000
+  debugService:
+    enabled: true
+    type: ClusterIP
+    externalPort: 8080
+    internalPort: 4001
+    annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '8080'
+  ingress:
+    enabled: true
+  resources: {}
+  probes:
+    liveness:
+      timeoutSeconds: 2
+    readiness:
+      timeoutSeconds: 2
+  args: ['public']
+
+oauth-incoming:
+  image:
+    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server
+    tag: master
+    pullPolicy: IfNotPresent
+  imageCredentials:
+    registry: registry.gitlab.com
+  service:
+    enabled: true
+    type: ClusterIP
+    externalPort: 80
+    internalPort: 4002
+  debugService:
+    enabled: true
+    type: ClusterIP
+    externalPort: 8080
+    internalPort: 4003
+    # TODO: enable metrics
+    # annotations:
+    #   prometheus.io/scrape: 'true'
+    #   prometheus.io/port: '8080'
+  ingress:
+    enabled: false
+  resources: {}
+  migration:
+    enabled: true
+    args: ['migrate']
+    command: 
+  args: ['incoming']
+  probes:
+    enabled: false
+    # TODO grpc healchecks
+    # liveness:
+    #   timeoutSeconds: 2
+    #   port: debug
+    #   path: health
+    # readiness:
+    #   timeoutSeconds: 2
+    #   port: debug
+    #   path: health
+  # secrets:
+  #   - name: POSTGRES_PASSWORD
+  #     ref:
+  #       name: questa-postgresql
+  #       key: postgresql-password
