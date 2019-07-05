@@ -17,7 +17,7 @@ oauth-public:
     internalPort: 4001
     annotations:
       prometheus.io/scrape: 'true'
-      prometheus.io/port: '8080'
+      prometheus.io/port: '4001'
   ingress:
     enabled: true
   resources: {}
