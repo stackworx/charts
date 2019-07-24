@@ -1,6 +1,6 @@
 oauth-public:
   image:
-    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server
+    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server/public
     tag: master
     pullPolicy: IfNotPresent
   imageCredentials:
@@ -30,7 +30,7 @@ oauth-public:
 
 oauth-incoming:
   image:
-    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server
+    repository: registry.gitlab.com/stackworx.io/shared/oauth-server/oauth-server/incoming
     tag: master
     pullPolicy: IfNotPresent
   imageCredentials:
