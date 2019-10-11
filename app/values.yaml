@@ -41,7 +41,6 @@ probes: {
 }
 migration:
   enabled: false
-  command: ['yarn']
   args: ['migrate']
 env: {}
 nodeSelector: {}
