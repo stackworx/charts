@@ -121,13 +121,14 @@ spec:
               protocol: TCP
             {{- end }}
           {{- if .Values.probes.enabled }}
-          timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds | default 1 }}
           livenessProbe:
+            timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds | default 1 }}
             httpGet:
               path: {{ .Values.probes.liveness.path | default "/" }}
               port: {{ .Values.probes.liveness.port | default "http" }}
               scheme: {{ .Values.probes.liveness.scheme | default "HTTP" }}
           readinessProbe:
+            timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds | default 1 }}
             httpGet:
               path: {{ .Values.probes.readiness.path | default "/" }}
               port: {{ .Values.probes.readiness.port | default "http" }} 
