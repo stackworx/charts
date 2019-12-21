@@ -48,7 +48,7 @@ spec:
       {{- end }}
       {{- if .Values.migration.enabled }}
       initContainers:
-        - name: {{ .Chart.Name }}-migration
+        - name: migration
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
