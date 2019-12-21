@@ -1,9 +1,9 @@
 dependencies:
   - name: app
-    version: "0.2.0"
+    version: "0.2.3"
     repository: "https://raw.githubusercontent.com/stackworx/charts/master"
     alias: oauth-public
   - name: app
-    version: "0.2.0"
+    version: "0.2.3"
     repository: "https://raw.githubusercontent.com/stackworx/charts/master"
     alias: oauth-incoming
