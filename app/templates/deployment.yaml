@@ -31,6 +31,16 @@ spec:
     spec:
       {{- if or (.Values.volumes) (.Values.secretVolumes) }}
       volumes:
+      {{- range .Values.query.extraConfigmapMounts }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .configMap }}
+      {{- end }}
+      {{- range .Values.agent.extraSecretMounts }}
+        - name: {{ .name }}
+          secret:
+            secretName: {{ .secretName }}
+      {{- end }}
       {{- if .Values.secretVolumes }}
       {{- range .Values.secretVolumes }}
         - name: {{ .volumeName }}
@@ -100,6 +110,18 @@ spec:
                 name: {{ template "app.fullname" $ }}-env
           {{- if or (.Values.volumeMounts) (.Values.secretVolumes) }}
           volumeMounts:
+          {{- range .Values.extraConfigmapMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              subPath: {{ .subPath }}
+              readOnly: {{ .readOnly }}
+          {{- end }}
+          {{- range .Values.extraSecretMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              subPath: {{ .subPath }}
+              readOnly: {{ .readOnly }}
+          {{- end }}
           {{- if .Values.secretVolumes }}
           {{- range .Values.secretVolumes }}
             - name: {{ .volumeName }}

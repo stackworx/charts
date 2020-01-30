@@ -44,6 +44,18 @@ migration:
   args: ['migrate']
 env: {}
 nodeSelector: {}
+extraSecretMounts: []
+# - name: jaeger-tls
+#   mountPath: /tls
+#   subPath: ""
+#   secretName: jaeger-tls
+#   readOnly: true
+extraConfigmapMounts: []
+# - name: jaeger-config
+#   mountPath: /config
+#   subPath: ""
+#   configMap: jaeger-config
+#   readOnly: true
 
 # https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#add-configmap-data-to-a-volume
 # volumeMounts: {}
