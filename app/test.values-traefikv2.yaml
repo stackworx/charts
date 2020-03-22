@@ -14,6 +14,9 @@ ingress:
   enabled: true
   traefikV2:
     enabled: true
+    basicAuth:
+      enabled: true
+      secretName: secret
   hosts:
     - test1.stackworx.dev
     - test2.stackworx.dev

@@ -6,6 +6,16 @@ metadata:
   name: {{ $fullName }}-compress
 spec:
   compress: {}
+---
+{{- if .Values.ingress.traefikV2.basicAuth.enabled }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ $fullName }}-basic-auth
+spec:
+  basicAuth:
+    secret: {{ .Values.ingress.traefikV2.basicAuth.secretName }}
+{{- end }}
 {{- end }}
 ---
 {{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
@@ -43,6 +53,9 @@ spec:
     match: {{ join " && " $matchExpressions }}
     middlewares:
       - {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
+      {{- if .Values.ingress.traefikV2.basicAuth.enabled }}
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-basic-auth@kubernetescrd
+      {{- end }}
     priority: {{ .Values.ingress.priority }}
     services:
     - kind: Service
@@ -83,6 +96,9 @@ spec:
     match: {{ join " && " $matchExpressions }}
     middlewares:
       - name: {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
+      {{- if .Values.ingress.traefikV2.basicAuth.enabled }}
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-basic-auth@kubernetescrd
+      {{- end }}
     priority: {{ .Values.ingress.priority }}
     services:
     - kind: Service

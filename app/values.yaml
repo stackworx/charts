@@ -29,6 +29,9 @@ ingress:
   enabled: true
   traefikV2:
     enabled: false
+    basicAuth:
+      enabled: false
+      secretName: ""
     http: false
   priority: 1
   annotations:
