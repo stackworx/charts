@@ -1,4 +1,4 @@
-{{- if and .Values.service.enabled .Values.ingress.enabled (not .Values.ingress.traefikV2) }}
+{{- if and .Values.service.enabled .Values.ingress.enabled (not .Values.ingress.traefikV2.enabled) }}
 {{-  if not .Values.ingress.hosts }}
   {{ fail "ingress.hosts must have at least one host" }}
 {{- end }}

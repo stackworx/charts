@@ -1,4 +1,4 @@
-{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2 }}
+{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
 {{-  if not .Values.ingress.hosts }}
   {{ fail "ingress.hosts must have at least one host" }}
 {{- end }}
@@ -8,7 +8,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-https
   labels:
     app: {{ template "app.name" . }}
     chart: {{ template "app.chart" . }}
@@ -19,10 +19,52 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- with .Values.ingress.entryPoints }}
   entryPoints:
+    - https
+  tls:
+    certResolver: default
+  routes:
+  - kind: Rule
+    {{- $matchExpressions := list }}
+    {{- range .Values.ingress.hosts }}
+      {{-  $expr := printf "Host(`%s`)" . -}}
+      {{- $matchExpressions = append $matchExpressions $expr }}  
+    {{- end }}
+    match: {{ join " && " $matchExpressions }}
+{{- with .Values.ingress.middlewares }}
+    middlewares:
+{{ toYaml . | indent 6 }}
+{{- end }}
+    priority: {{ .Values.ingress.priority }}
+    services:
+    - kind: Service
+      name: {{ template "app.fullname" . }}
+      port: {{ .Values.service.externalPort | default "80" }}
+{{- end }}
+---
+{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2 }}
+{{-  if not .Values.ingress.hosts }}
+  {{ fail "ingress.hosts must have at least one host" }}
+{{- end }}
+{{- $fullName := include "app.fullname" . -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $ingressPath := .Values.ingress.path -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-http
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.ingress.annotations }}
+  annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
+spec:
+  entryPoints:
+    - http
   routes:
   - kind: Rule
     {{- $matchExpressions := list }}

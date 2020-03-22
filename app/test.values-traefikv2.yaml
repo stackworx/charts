@@ -12,7 +12,8 @@ service:
   nodePort: 38080
 ingress:
   enabled: true
-  traefikV2: true
+  traefikV2:
+    enabled: true
   hosts:
     - test1.stackworx.dev
     - test2.stackworx.dev
