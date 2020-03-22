@@ -3,9 +3,9 @@ entries:
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.118468+02:00"
+    created: "2020-03-23T01:53:59.955369+02:00"
     description: A Helm chart for Kubernetes
-    digest: 2dec869a312aecb0955e2ddd5a0292fe3c6754270c4cf408f3da7ee47668e610
+    digest: 805f1d8730a2a54335c2edf7d30be6599008709d83b299f18fc2f6c5af55a55b
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: app
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.3.0
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.117785+02:00"
+    created: "2020-03-23T01:53:59.954756+02:00"
     description: A Helm chart for Kubernetes
     digest: 0d2ac425b710f61ee25d9c573138ae4d5d383479d2af72efaa124dd8ae7795b0
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -23,7 +23,7 @@ entries:
     version: 0.2.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.116233+02:00"
+    created: "2020-03-23T01:53:59.953863+02:00"
     description: A Helm chart for Kubernetes
     digest: d0f7eef128ad4bf6f70b872e6bee82fced54be91f58f0206b094a24fc6074628
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -33,7 +33,7 @@ entries:
     version: 0.2.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.115102+02:00"
+    created: "2020-03-23T01:53:59.952415+02:00"
     description: A Helm chart for Kubernetes
     digest: 8f4d438df712386b639a16ef6192586f0f92f90d7bfefd521621bae67814de8f
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -43,7 +43,7 @@ entries:
     version: 0.2.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.114185+02:00"
+    created: "2020-03-23T01:53:59.951675+02:00"
     description: A Helm chart for Kubernetes
     digest: 247526846f04175f56febd9a90b5636bd7b7d9d32b6d14896129624ca2b7294c
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -53,7 +53,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.113317+02:00"
+    created: "2020-03-23T01:53:59.950915+02:00"
     description: A Helm chart for Kubernetes
     digest: 12a22058fb469111a6299a796e8cc822c7660cc8315f02ad18c87ebdb0ca7ac5
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -63,7 +63,7 @@ entries:
     version: 0.2.0
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.106376+02:00"
+    created: "2020-03-23T01:53:59.943918+02:00"
     description: A Helm chart for Kubernetes
     digest: f29224b379c715fe85633839da7fa8fd0545ef5f2bb1f077171cd06b60f738ea
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -73,7 +73,7 @@ entries:
     version: 0.1.10
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.112478+02:00"
+    created: "2020-03-23T01:53:59.950173+02:00"
     description: A Helm chart for Kubernetes
     digest: 984a18d2dac6ddd881c91774bc0f0f8d16d5645f175db34f116f2497ae5dfab2
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -83,7 +83,7 @@ entries:
     version: 0.1.9
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.111444+02:00"
+    created: "2020-03-23T01:53:59.949264+02:00"
     description: A Helm chart for Kubernetes
     digest: a252e849307760f9a3c3b205109d45a3423173c8aa5a9282fbff1f62d0cc055f
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -93,7 +93,7 @@ entries:
     version: 0.1.8
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.110591+02:00"
+    created: "2020-03-23T01:53:59.948525+02:00"
     description: A Helm chart for Kubernetes
     digest: aaea11122e923242aac1e3afd4099b170bca93f6935efeb445f9d5fa685bcb11
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -103,7 +103,7 @@ entries:
     version: 0.1.7
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.109773+02:00"
+    created: "2020-03-23T01:53:59.947793+02:00"
     description: A Helm chart for Kubernetes
     digest: b4ac0b27fbca045fc22e4ee9da907d19d5e212a11e1ad5992aedb34a3e393653
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -113,7 +113,7 @@ entries:
     version: 0.1.6
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.108977+02:00"
+    created: "2020-03-23T01:53:59.947093+02:00"
     description: A Helm chart for Kubernetes
     digest: e4201ea463314bf4659f991005a76b0b8702091b388a59e1dfe14aeca87f90e0
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -123,7 +123,7 @@ entries:
     version: 0.1.5
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.108303+02:00"
+    created: "2020-03-23T01:53:59.94636+02:00"
     description: A Helm chart for Kubernetes
     digest: 5318bccd61a9d53be6b1d1ce33262bf678600c92247b0a0deeebb48d5d4e90ce
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -133,7 +133,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.107639+02:00"
+    created: "2020-03-23T01:53:59.945548+02:00"
     description: A Helm chart for Kubernetes
     digest: 307b39637a9375b0b798cfdfb6639694f1d21fd32ec06b91c6a1c6db80c00000
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -143,7 +143,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.107059+02:00"
+    created: "2020-03-23T01:53:59.944565+02:00"
     description: A Helm chart for Kubernetes
     digest: 33a8e32831879de6f9db1df43678d103b53713908ca5e34d85db35d14a3ec742
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -153,7 +153,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.105451+02:00"
+    created: "2020-03-23T01:53:59.942594+02:00"
     description: A Helm chart for Kubernetes
     digest: badb2a188b5c4e9ec4ea8044aea202e025fd3bd7558cc3163be1edcaa4447856
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -163,7 +163,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.104598+02:00"
+    created: "2020-03-23T01:53:59.941824+02:00"
     description: A Helm chart for Kubernetes
     digest: 8fda8abff9814b9e15a339a6004fc0ce504bdeeb3b85dbec30b18f04651e7561
     icon: http://stackworx.io/logo-versions/white-512x512.png
@@ -174,7 +174,7 @@ entries:
   oauth-server:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.128638+02:00"
+    created: "2020-03-23T01:53:59.966523+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -185,7 +185,7 @@ entries:
       repository: https://raw.githubusercontent.com/stackworx/charts/master
       version: 0.3.0
     description: A Helm chart for Kubernetes
-    digest: a454fafc410b22306ba6fc369b0c51668021b8b05eabd62fae97da097f137982
+    digest: 275dbc78a761f4414a1880c30658980906ec077935e546306db88627ca8766e1
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: oauth-server
     urls:
@@ -193,7 +193,7 @@ entries:
     version: 0.2.3
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.127101+02:00"
+    created: "2020-03-23T01:53:59.963799+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -212,7 +212,7 @@ entries:
     version: 0.2.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.125651+02:00"
+    created: "2020-03-23T01:53:59.962348+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -231,7 +231,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.12423+02:00"
+    created: "2020-03-23T01:53:59.960712+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -250,7 +250,7 @@ entries:
     version: 0.2.0
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.122809+02:00"
+    created: "2020-03-23T01:53:59.95948+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -269,7 +269,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.121422+02:00"
+    created: "2020-03-23T01:53:59.958166+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -288,7 +288,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.120012+02:00"
+    created: "2020-03-23T01:53:59.956847+02:00"
     dependencies:
     - alias: oauth-public
       name: app
@@ -308,12 +308,12 @@ entries:
   postgresql-s3-backup:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-03-23T01:42:59.129826+02:00"
+    created: "2020-03-23T01:53:59.966946+02:00"
     description: A Backup cronjob that saves backup in the s3 AWS bucket
-    digest: 0270fdffdff959443cf7fb61e140c7b769ef59eaec3f43916ff63f4c45004f1a
+    digest: 0c774589908f1793dd960371ce1ca42c158d904807d345388094d8f36b7863a8
     icon: http://stackworx.io/logo-versions/white-512x512.png
     name: postgresql-s3-backup
     urls:
     - postgresql-s3-backup-0.1.0.tgz
     version: 0.1.0
-generated: "2020-03-23T01:42:59.102551+02:00"
+generated: "2020-03-23T01:53:59.940473+02:00"
