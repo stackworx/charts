@@ -1,5 +1,7 @@
-{{- if .Values.service.enabled }}
-{{- if .Values.ingress.enabled -}}
+{{- if and .Values.service.enabled .Values.ingress.enabled (not .Values.ingress.traefikV2) }}
+{{-  if not .Values.ingress.hosts }}
+  {{ fail "ingress.hosts must have at least one host" }}
+{{- end }}
 {{- $fullName := include "app.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
@@ -27,5 +29,4 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: http
   {{- end }}
-{{- end }}
 {{- end }}

@@ -31,12 +31,12 @@ spec:
     spec:
       {{- if or (.Values.volumes) (.Values.secretVolumes) }}
       volumes:
-      {{- range .Values.query.extraConfigmapMounts }}
+      {{- range .Values.extraConfigmapMounts }}
         - name: {{ .name }}
           configMap:
             name: {{ .configMap }}
       {{- end }}
-      {{- range .Values.agent.extraSecretMounts }}
+      {{- range .Values.extraSecretMounts }}
         - name: {{ .name }}
           secret:
             secretName: {{ .secretName }}

@@ -1,0 +1,43 @@
+image:
+  repository: registry.gitlab.com/stackworx.io/air-shopping-deploy
+  tag: develop
+  pullPolicy: Always
+imageCredentials:
+  registry: registry.gitlab.com
+service:
+  enabled: true
+  type: NodePort
+  externalPort: 80
+  internalPort: 8080
+  nodePort: 38080
+ingress:
+  enabled: true
+  traefikV2: true
+  hosts:
+    - test1.stackworx.dev
+    - test2.stackworx.dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+resources: {}
+probes:
+  {
+    enabled: true,
+    liveness: { path: /ping, scheme: HTTPS },
+    readiness: { path: /ping },
+  }
+volumeMounts:
+  - name: config-volume
+    mountPath: /usr/build/build/fixtures/
+volumes:
+  - name: config-volume
+    configMap:
+      name: fixture-config
+secretVolumes:
+  - volumeName: "tls"
+    mountPath: "/tls"
+    secretName: "secret"
+migration:
+  enabled: false
+env: {}
+nodeSelector:
+  type: apps

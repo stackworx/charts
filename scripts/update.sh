@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
-helm lint ./app/
+helm lint ./app/ --values ./app/test.values.yaml
+helm lint ./app/ --values ./app/test.values-traefikv2.yaml
 helm package ./app/
 
 helm lint ./postgresql-s3-backup/ --values ./postgresql-s3-backup/test.values.yaml
