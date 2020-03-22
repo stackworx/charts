@@ -30,7 +30,6 @@ ingress:
   traefikV2:
     enabled: false
     http: false
-  middlewares: []
   priority: 1
   annotations:
     kubernetes.io/ingress.class: traefik
