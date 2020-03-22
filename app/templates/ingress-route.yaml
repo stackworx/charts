@@ -1,25 +1,5 @@
 {{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
 {{- $fullName := include "app.fullname" . -}}
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: {{ $fullName }}-compress
-spec:
-  compress: {}
-{{- if .Values.ingress.traefikV2.basicAuth.enabled }}
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: {{ $fullName }}-basic-auth
-spec:
-  basicAuth:
-    secret: {{ .Values.ingress.traefikV2.basicAuth.secretName }}
-{{- end }}
-{{- end }}
----
-{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
-{{- $fullName := include "app.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: traefik.containo.us/v1alpha1
