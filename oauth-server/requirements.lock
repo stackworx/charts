@@ -1,9 +1,9 @@
 dependencies:
 - name: app
   repository: https://raw.githubusercontent.com/stackworx/charts/master
-  version: 0.2.0
+  version: 0.3.0
 - name: app
   repository: https://raw.githubusercontent.com/stackworx/charts/master
-  version: 0.2.0
-digest: sha256:c9621495c5f4f33819c796db07ba3c01cb58c1f46e0fba74af77ecab7a843a8f
-generated: "2019-11-07T23:21:14.447972+02:00"
+  version: 0.3.0
+digest: sha256:9b723a0124445cd165d5494bec5e15befca71314e4e2dab2d751db00923dcebd
+generated: "2020-03-23T00:59:17.064208+02:00"

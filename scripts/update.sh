@@ -7,7 +7,7 @@ helm package ./app/
 helm lint ./postgresql-s3-backup/ --values ./postgresql-s3-backup/test.values.yaml
 helm package ./postgresql-s3-backup/
 
-helm lint ./oauth-server/
+# helm lint ./oauth-server/ --values ./oauth-server/test.values.yaml
 helm package ./oauth-server/
 
 helm repo index .
