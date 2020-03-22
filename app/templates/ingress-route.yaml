@@ -82,7 +82,7 @@ spec:
     {{- end }}
     match: {{ join " && " $matchExpressions }}
     middlewares:
-      - {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
     priority: {{ .Values.ingress.priority }}
     services:
     - kind: Service
