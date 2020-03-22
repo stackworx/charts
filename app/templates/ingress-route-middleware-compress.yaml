@@ -1,0 +1,9 @@
+{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
+{{- $fullName := include "app.fullname" . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ $fullName }}-compress
+spec:
+  compress: {}
+{{- end }}
