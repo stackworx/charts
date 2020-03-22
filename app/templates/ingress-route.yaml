@@ -19,9 +19,6 @@ spec:
 {{- end }}
 ---
 {{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
-{{-  if and .Values.ingress.enabled (not .Values.ingress.hosts) }}
-  {{ fail "ingress.hosts must have at least one host" }}
-{{- end }}
 {{- $fullName := include "app.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
@@ -64,9 +61,6 @@ spec:
 {{- end }}
 ---
 {{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2 }}
-{{-  if not .Values.ingress.hosts }}
-  {{ fail "ingress.hosts must have at least one host" }}
-{{- end }}
 {{- $fullName := include "app.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
