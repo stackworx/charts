@@ -29,7 +29,7 @@ spec:
     {{- end }}
     match: {{ join " && " $matchExpressions }}
     middlewares:
-      - {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
       {{- if .Values.ingress.traefikV2.basicAuth.enabled }}
       - name: {{ .Release.Namespace }}-{{ $fullName }}-basic-auth@kubernetescrd
       {{- end }}
