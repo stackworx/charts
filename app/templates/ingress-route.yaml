@@ -40,7 +40,7 @@ spec:
       port: {{ .Values.service.externalPort | default "80" }}
 {{- end }}
 ---
-{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2 }}
+{{- if and .Values.service.enabled .Values.ingress.enabled .Values.ingress.traefikV2.enabled }}
 {{- $fullName := include "app.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
