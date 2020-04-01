@@ -1,0 +1,15 @@
+ingress:
+  hosts:
+  http:
+    enabled: true
+  annotations:
+  basicAuth:
+    enabled: true
+    secretName: secret
+service:
+  name:
+  externalPort: 80
+  internalPort: 8080
+entryPoints:
+  http: http
+  https: https

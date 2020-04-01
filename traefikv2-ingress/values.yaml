@@ -4,8 +4,8 @@ ingress:
     enabled: false
   annotations:
   basicAuth:
-    enabled: true
-    secretName: secret
+    enabled: false
+    secretName:
 service:
   name:
   externalPort: 80

@@ -7,8 +7,8 @@ kind: IngressRoute
 metadata:
   name: {{ $fullName }}-http
   labels:
-    app: {{ template "app.name" . }}
-    chart: {{ template "app.chart" . }}
+    app: {{ template "traefikv2-ingress.name" . }}
+    chart: {{ template "traefikv2-ingress.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}
