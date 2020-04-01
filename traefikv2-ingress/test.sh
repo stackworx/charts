@@ -1,0 +1,1 @@
+helm template debug ./ -f  test.values.yaml

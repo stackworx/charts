@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "traefikv2-ingress.fullname" . }}-test-connection"
+  labels:
+    {{- include "traefikv2-ingress.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "traefikv2-ingress.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

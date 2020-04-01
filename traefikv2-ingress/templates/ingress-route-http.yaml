@@ -1,0 +1,39 @@
+{{- if .Values.ingress.http.enabled }}
+{{- $fullName := include "traefikv2-ingress.fullname" . -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $ingressPath := .Values.ingress.path -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-http
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ template "app.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  entryPoints:
+    - {{ .Values.entryPoints.http }}
+  routes:
+  - kind: Rule
+    {{- $matchExpressions := list }}
+    {{- range .Values.ingress.hosts }}
+      {{-  $expr := printf "Host(`%s`)" . -}}
+      {{- $matchExpressions = append $matchExpressions $expr }}  
+    {{- end }}
+    match: {{ join " && " $matchExpressions }}
+    middlewares:
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-compress@kubernetescrd
+      {{- if .Values.ingress.basicAuth.enabled }}
+      - name: {{ .Release.Namespace }}-{{ $fullName }}-basic-auth@kubernetescrd
+      {{- end }}
+    priority: {{ .Values.ingress.priority }}
+    services:
+    - kind: Service
+      name: {{ .Values.service.name }}
+      port: {{ .Values.service.externalPort | default "80" }}
+{{- end }}
