@@ -17,16 +17,12 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: traefik
 resources: {}
-probes: {
-  enabled: true,
-  liveness: {
-    path: /ping,
-    scheme: HTTPS
-  },
-  readiness: {
-    path: /ping
+probes:
+  {
+    enabled: true,
+    liveness: { path: /ping, scheme: HTTPS },
+    readiness: { path: /ping },
   }
-}
 volumeMounts:
   - name: config-volume
     mountPath: /usr/build/build/fixtures/
@@ -35,11 +31,21 @@ volumes:
     configMap:
       name: fixture-config
 secretVolumes:
-  - volumeName: 'tls'
-    mountPath: '/tls'
-    secretName: 'secret'
+  - volumeName: "tls"
+    mountPath: "/tls"
+    secretName: "secret"
 migration:
   enabled: false
 env: {}
 nodeSelector:
   type: apps
+
+cronJobs:
+  - name: mr-checker
+    schedule: 15 6 * * *
+    restartPolicy: OnFailure
+    command:
+      - "cron"
+    args:
+      - arg1
+      - arg2

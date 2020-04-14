@@ -1,0 +1,120 @@
+{{- range .Values.cronJobs }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "app.fullname" $ }}
+  labels:
+    app: {{ template "app.name" $ }}
+    chart: {{ template "app.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+  annotations:
+{{- if  .annotations }}
+{{ toYaml  .annotations | indent 4 }}
+{{- end }}
+spec:
+  schedule: {{ .schedule }}
+  concurrencyPolicy: {{ default "Forbid" .concurrencyPolicy }}
+  suspend: {{ default false .suspend }}
+  successfulJobsHistoryLimit: {{ default 3 .successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ default 1 .failedJobsHistoryLimit }}
+  jobTemplate:
+    metadata:
+      labels:
+        app: {{ template "app.name" $ }}
+        release: {{ $.Release.Name }}
+    spec:
+      template:
+        spec:
+          {{- if or ( $.Values.volumes) ( $.Values.secretVolumes) }}
+          volumes:
+          {{- range  $.Values.extraConfigmapMounts }}
+            - name: {{ .name }}
+              configMap:
+                name: {{ .configMap }}
+          {{- end }}
+          {{- range  $.Values.extraSecretMounts }}
+            - name: {{ .name }}
+              secret:
+                secretName: {{ .secretName }}
+          {{- end }}
+          {{- if  $.Values.secretVolumes }}
+          {{- range  $.Values.secretVolumes }}
+            - name: {{ .volumeName }}
+              secret: 
+                secretName: {{ .secretName }}
+          {{- end }} 
+          {{- end }}
+          {{- if  $.Values.volumes }}
+{{ toYaml  $.Values.volumes | indent 12 }}
+          {{- end }}
+          {{- end }}
+          {{- if  $.Values.imageCredentials }}
+          imagePullSecrets:
+            - name: {{ template "app.fullname" $ }}-registrykey
+          {{- end }}
+          containers:
+            - name: {{ $.Chart.Name }}
+              image: "{{  $.Values.image.repository }}:{{  $.Values.image.tag }}"
+              imagePullPolicy: {{  $.Values.image.pullPolicy }}
+    {{- if .command }}
+              command:
+{{ toYaml .command | indent 16 }}
+    {{- end }}
+    {{- if  .args }}
+              args:
+{{ toYaml .args | indent 16 }}
+    {{- end }}
+              {{- if  $.Values.secrets }}
+              env:
+              {{- range  $.Values.secrets }}
+                - name: {{ .name }}
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ .ref.name }}
+                      key: {{ .ref.key }}
+              {{- end }}
+              {{- end }}
+              envFrom:
+                - configMapRef:
+                    name: {{ template "app.fullname" $ }}-env
+              {{- if or ( $.Values.volumeMounts) ( $.Values.secretVolumes) }}
+              volumeMounts:
+              {{- range  $.Values.extraConfigmapMounts }}
+                - name: {{ .name }}
+                  mountPath: {{ .mountPath }}
+                  subPath: {{ .subPath }}
+                  readOnly: {{ .readOnly }}
+              {{- end }}
+              {{- range  $.Values.extraSecretMounts }}
+                - name: {{ .name }}
+                  mountPath: {{ .mountPath }}
+                  subPath: {{ .subPath }}
+                  readOnly: {{ .readOnly }}
+              {{- end }}
+              {{- if  $.Values.secretVolumes }}
+              {{- range  $.Values.secretVolumes }}
+                - name: {{ .volumeName }}
+                  mountPath: {{ .mountPath }}
+              {{- end }} 
+              {{- end }}
+              {{- if  $.Values.volumeMounts }}
+{{ toYaml  $.Values.volumeMounts | indent 16 }}
+              {{- end }}
+              {{- end }}
+              resources:
+{{ toYaml  $.Values.resources | indent 16 }}
+        {{- with  $.Values.nodeSelector }}
+          nodeSelector:
+{{ toYaml . | indent 12 }}
+        {{- end }}
+        {{- with  $.Values.affinity }}
+          affinity:
+{{ toYaml . | indent 12 }}
+        {{- end }}
+        {{- with  $.Values.tolerations }}
+          tolerations:
+{{ toYaml . | indent 12 }}
+        {{- end }}
+---
+{{- end}}

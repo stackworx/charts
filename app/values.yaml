@@ -63,3 +63,5 @@ extraConfigmapMounts: []
 #   - volumeName: 'tls'
 #     mountPath: '/tls'
 #     secretName: 'secret'
+
+cronJobs: []
