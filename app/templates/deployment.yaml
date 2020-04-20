@@ -12,7 +12,7 @@ metadata:
 {{ toYaml .Values.deployment.annotations | indent 4 }}
 {{- end }}
 spec:
-  replicas: {{ default 1 .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: {{ default 3 .Values.revisionHistoryLimit }}
   selector:
     matchLabels:
